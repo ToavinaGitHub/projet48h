@@ -1,0 +1,21 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Code_controller extends CI_Controller {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Code_model');
+
+    }
+
+    public function index()
+    {
+        $this->load->view('front-office/Code_view');
+    }
+
+
+
+
+
+}

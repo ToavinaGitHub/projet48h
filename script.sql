@@ -1,130 +1,146 @@
-create table caracComptable
-(
-    idCaraCompta        int auto_increment
-        primary key,
-    idDeviseCompta      int      null,
-    idDeviseEquivalence int      null,
-    debutExercice       datetime null
+create database 48h;
+use 48h;
+create table user(
+                     idUser int primary key auto_increment,
+                     nom varchar(255),
+                     prenom varchar(255),
+                     email varchar(255),
+                     mdp varchar(255),
+                     dtn date,
+                     poids DECIMAL(10,3),
+                     sexe int,
+                     taille int
 );
 
-create table categorie
-(
-    idCategorie   int auto_increment
-        primary key,
-    typeCategorie text null
+CREATE table userPics(
+                         idUser int,
+                         sary VARCHAR(100),
+                         Foreign Key (idUser) REFERENCES user(idUser)
+);
+
+create table objectif(
+                         idObjectif int PRIMARY KEY auto_increment,
+                         nom VARCHAR(100)
+
+);
+
+CREATE table userObjectif(
+                             idObjectif int,
+                             idUser int,
+                             Foreign Key (idObjectif) REFERENCES objectif(idObjectif),
+                             Foreign Key (idUser) REFERENCES user(idUser)
+);
+
+CREATE Table regime(
+                       idRegime int PRIMARY KEY auto_increment,
+                       duree int,
+                       idObjectif int,
+                       poids int,
+                       details VARCHAR(255),
+                       sexe int,
+                       montant DECIMAL(10,3),
+                       Foreign Key (idObjectif) REFERENCES objectif(idObjectif)
+);
+
+CREATE Table recette(
+                        idrecette int PRIMARY KEY auto_increment,
+                        nom VARCHAR(255),
+                        details VARCHAR(255),
+                        sary VARCHAR(255)
 );
 
 
--------------------------------------------
-create table codeJournal
-(
-    idCodeJournal   int auto_increment
-        primary key,
-    code            varchar(5)   null,
-    intituleJournal varchar(255) null
+
+CREATE table RegimeRecette(
+                              idRegime int,
+                              idRecette int,
+                              Foreign Key (idRegime) REFERENCES regime(idRegime),
+                              Foreign Key (idRecette) REFERENCES recette(idRecette)
 );
---------------------------------------------
-create table devise
-(
-    idDevise  bigint unsigned auto_increment
-        primary key,
-    nomDevise text null,
-    constraint idDevise
-        unique (idDevise)
+CREATE TABLE recettePics(
+     idrecette int,
+     sary VARCHAR(100),
+     Foreign Key (idRecette) REFERENCES recette(idrecette)
 );
 
-create table deviseEquivalence
-(
-    idDeviseEquivalence int auto_increment
-        primary key,
-    idDevise            int    null,
-    taux                double null
+CREATE table actSport(
+                         idActSport int PRIMARY KEY auto_increment,
+                         nom VARCHAR(255),
+                         details VARCHAR(255),
+                         poids int,
+                         idObjectif int,
+                         sexe int,
+                         taille INT,
+                         Foreign Key (idObjectif) REFERENCES objectif(idObjectif)
 );
 
-create table emp
-(
-    idEmp     int auto_increment
-        primary key,
-    email     varchar(80)   null,
-    mdp       varchar(80)   null,
-    nomEmp    varchar(80)   null,
-    idTypeEmp int default 1 null
+CREATE TABLE actSportPics(
+    idActSport int,
+    sary VARCHAR(100),
+    Foreign Key (idActSport) REFERENCES actSport(idActSport)
 );
 
-create table entreprise
-(
-    idEntreprise       int auto_increment
-        primary key,
-    nomEntreprise      varchar(80) null,
-    objet              varchar(80) null,
-    siege              varchar(80) null,
-    nomDirigeant       varchar(80) null,
-    numRegistre        varchar(80) null,
-    numIdentiteFiscale varchar(80) null,
-    numGestionCommerce varchar(80) null,
-    numStatistique     varchar(80) null,
-    logo               varchar(80) null,
-    dateCreation       datetime    null,
-    numTel             varchar(80) null,
-    status             varchar(80) null
+CREATE table exercice(
+                         idExercice int PRIMARY KEY auto_increment,
+                         nom VARCHAR(255),
+                         details VARCHAR(255)
 );
 
-create table exerciceComptable
-(
-    idExercice        int auto_increment
-        primary key,
-    dateDebutExercice date null,
-    dateFinExercice   date null
+CREATE table actExercice(
+                            idActSport int,
+                            idExercice int,
+                            Foreign Key (idActSport) REFERENCES actSport(idActSport),
+                            Foreign Key (idExercice) REFERENCES exercice(idExercice)
 );
 
-create table journal
-(
-    idJournal       int auto_increment
-        primary key,
-    dateJournal     date        null,
-    piece           varchar(20) null,
-    intitule        varchar(35) null,
-    idDevise        int         null,
-    idCompteGeneral int         null,
-    idCompteTiers   int         null,
-    idCodeJournal   int         null
+CREATE table porteMonnaie(
+                             idUser int,
+                             montant DECIMAL(10,3),
+                             Foreign Key (idUser) REFERENCES user(idUser)
 );
 
-create table planComptable
-(
-    idPlanCompta int auto_increment
-        primary key,
-    numComptable text null,
-    idCategorie  int  null,
-    intitule     text null
+CREATE table code(
+                     idCode int PRIMARY KEY auto_increment,
+                     valeur int,
+                     montant DECIMAL(10,3),
+                     etat VARCHAR(255)
+);
+create;
+CREATE table admin(
+                      idAdmin int PRIMARY key auto_increment,
+                      nom VARCHAR(255),
+                      mdp VARCHAR(255)
 );
 
-create table typeCompteTiers
-(
-    idType  int auto_increment
-        primary key,
-    nomType varchar(80) null
-);
+insert into admin (nom,mdp) values ('admin','admin');
+insert into user (email, mdp) values ('jean@gmail.com','jean');
 
-create table planTiers
-(
-    idPlanTiers int auto_increment
-        primary key,
-    idType      int         null,
-    numero      varchar(80) null,
-    intitule    text        null,
-    constraint plantiers_ibfk_1
-        foreign key (idType) references typeCompteTiers (idType)
-);
+INSERT INTO objectif VALUES(null,'reduire poids');
+INSERT INTO objectif VALUES(null,'augmenter poids');
 
-create index idType
-    on planTiers (idType);
 
-create table typeEmploye
-(
-    idTypeEmp   int auto_increment
-        primary key,
-    typeEmploye varchar(80) null
-);
+INSERT INTO regime (duree, idObjectif, poids, details, sexe, montant) VALUES
+(10, 1, 70, 'Lorem ipsum', 1, 100.5),
+(7, 2, 65, 'Dolor sit amet', 0, 150.75),
+(30, 1, 80, 'Consectetur adipiscing elit', 1, 200.0),
+(30, 2, 70, 'Sed do eiusmod tempor incididunt', 0, 120.0),
+(30, 1, 75, 'Ut labore et dolore magna aliqua', 1, 180.25);
+
+INSERT INTO recette (nom, details, sary) VALUES
+('Recette 1', 'Lorem ipsum', 'image1.jpg'),
+('Recette 2', 'Dolor sit amet', 'image2.jpg'),
+('Recette 3', 'Consectetur adipiscing elit', 'image3.jpg'),
+('Recette 4', 'Sed do eiusmod tempor incididunt', 'image4.jpg'),
+('Recette 5', 'Ut labore et dolore magna aliqua', 'image5.jpg');
+
+
+INSERT INTO RegimeRecette (idRegime, idRecette) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
+
+
 
 

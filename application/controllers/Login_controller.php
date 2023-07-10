@@ -20,6 +20,9 @@ class Login_controller extends CI_Controller {
 
         if($this->User_model->checkLogin($email,$mdp))
         {
+            echo "haha";
+            $row =  $this->User_model->getUserWith($email,$mdp);
+            $_SESSION['user'] = $row;
             $this->load->view('front-office/Accueil_view');
         }else{
             $message['erreur']="Email ou mot de passe incorrect";

@@ -1,15 +1,11 @@
-
 <?php
 include "inc/head.php";
 include "inc/Header.php";
 include "inc/left_pannel.php";
 ?>
-
-
 <link rel="stylesheet" href="<?php echo base_url("assets/css/login.css")?>">
 </head>
 <body>
-
 <link rel="stylesheet" href="<?php echo site_url("assets/bootstrap/css/bootstrap.min.css")?>">
 <link rel="stylesheet" href="<?php echo site_url("assets/css/styles.min.css")?>">
 <script src="<?php echo site_url("assets/js/parsley.min.js")?>"></script>
