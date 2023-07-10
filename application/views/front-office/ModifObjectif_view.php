@@ -20,8 +20,9 @@ include "inc/left_pannel.php";
             <label for="new-goal">Nouvel objectif :</label>
             <form action="<?php echo base_url("Modifob_controller/updateob") ?>" method="post">
             <select id="new-goal" name="new-goal">
-                <option value="1">Perdre du poids</option>
-                <option value="2">Gagner du poids</option>
+                 <?php for($i=0;$i<count($obj);$i++) { ?> 
+                <option value="<?php echo $obj[$i]['idObjectif'] ?>"><?php echo $obj[$i]['nom'] ?></option>
+                <?php } ?>
             </select>
             <input type="submit"id="update-btn" value="Mettre à jour"></input>
             </form>

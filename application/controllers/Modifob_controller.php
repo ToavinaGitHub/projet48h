@@ -20,16 +20,18 @@ class Modifob_controller extends CI_Controller {
        $row=array();
        
         $row['ob']=$this->Modifob_model->getobjectif($id);
-        $this->load->view('front-office/ModifObjectif_view',$row);
+         $row['obj']=$this->Modifob_model->getAllOjectif();
+         $this->load->view('front-office/ModifObjectif_view',$row);
         
 
     }
+   
     public function updateob()
     {
       
         $id=2;
         $newob=$_POST['new-goal'];
-        // $this->Modifob_model->update($newob,$id);
+     $this->Modifob_model->update($newob,$id);
         
     }
    
