@@ -93,7 +93,7 @@ CREATE table code(
                      montant DECIMAL(10,3),
                      etat VARCHAR(255)
 );
-
+create;
 CREATE table admin(
                       idAdmin int PRIMARY key auto_increment,
                       nom VARCHAR(255),
