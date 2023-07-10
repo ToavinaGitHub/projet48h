@@ -101,17 +101,24 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
             <div class="col-ng-12">
                 <div class="container-fluid">
                     <div class="form-container">
-                        <form>
+                        <form method="post" action="<?php echo base_url('Code_controller/insertVola')?>">
                             <label for="code-input">Entrez un code:</label>
-                            <input type="text" id="code-input" placeholder="Code à 14 chiffres...">
+                            <input type="text" id="code-input"  name="code" placeholder="Code à 14 chiffres...">
                             <input type="submit" value="Entrer">
                         </form>
+                        <?php if (isset($erreur)){?>
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                <span class="badge badge-pill badge-danger">!!!</span>
+                                <?php echo $erreur;?>
+                                
+                            </div>
+                        <?php } ?>
                     </div>
                     <h4>Liste des codes</h4>
                     <ul class="liste-code">
-                        <li>1234567654</li>
-                        <li>1234567654</li>
-                        <li>1234567654</li>
+                        <?php for($i=0;$i<count($all);$i++){ ?>
+                            <li><?php echo $all[$i]['valeur']; ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
