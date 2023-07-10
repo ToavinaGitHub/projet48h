@@ -21,7 +21,7 @@ include "inc/head.php";
                                 <div class="text-center">
                                     <h4 class="mt-1 mb-5 pb-1">Login </h4>
                                 </div>
-                                <form method="post" action="<?php echo base_url("Login_controller/checkUserLogin")?>" data-parsley-validate id="form">
+                                <form method="post"  data-parsley-validate id="form">
                                     <p>Please login to your account</p>
                                     <div class="form-outline mb-4">
                                         <div class="user-box">
