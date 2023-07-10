@@ -6,6 +6,7 @@ class Login_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('Inscription_model');
 
     }
 
@@ -14,18 +15,11 @@ class Login_controller extends CI_Controller {
         $this->load->view('front-office/Login_view');
     }
 
-    public function checkUserLogin(){
-        $email = trim($_POST["email"]);
-        $mdp = trim($_POST["password"]);
-
-        if($this->User_model->checkLogin($email,$mdp))
-        {
-            $this->load->view('front-office/Accueil_view');
-        }else{
-            $message['erreur']="Email ou mot de passe incorrect";
-            $this->load->view('front-office/Login_view',$message);
-        }
+    public function inscription(){
+      $data['objectifs'] = $this->Inscription_model->getAllObjectif();
+        $this->load->view('front-office/Inscription_view',$data);
     }
-
-
+    public function next(){
+        $this->load-> view('front-office/Next_view');
+    }
 }

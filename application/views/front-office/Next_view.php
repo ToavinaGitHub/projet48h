@@ -18,25 +18,38 @@ include "inc/head.php";
                     <div class="row g-0">
                         <div class="col-lg-6">
                             <div class="card-body p-md-5 mx-md-4">
-                                <div class="text-center">
-                                    <h4 class="mt-1 mb-5 pb-1">Login </h4>
-                                </div>
-                                <form method="post" data-parsley-validate id="form">
-                                    <p>Please login to your account</p>
+
+                                <form method="post" action="<?php echo base_url("Login_controller/next")?>" data-parsley-validate id="form">
+
                                     <div class="form-outline mb-4">
                                         <div class="user-box">
-                                            <input type="text" name="email" id="email" required data-parsley-required="true" data-parsley-type="email">
-                                            <span class="bt-flabels__error-desc">Required/Invalid Email</span>
-                                            <label for="email">E-mail</label>
+                                            <input type="number" name="poids" id="poids" min="0" required>
+                                            <label for="poids">Poids</label>
                                         </div>
                                     </div>
+
                                     <div class="form-outline mb-4">
                                         <div class="user-box">
-                                            <input type="password" name="password" required data-parsley-minlength="6">
-                                            <span class="bt-flabels__error-desc">Must have at least 6 characters</span>
-                                            <label>Password</label>
+                                            <input type="number" name="taille" id="taille" min="0" required>
+                                            <label for="taille">Taille</label>
                                         </div>
                                     </div>
+                                    <div class="form-check mb-4">
+                                        <p>Quelle est votre objectif?</p>
+                                        <input class="form-check-input" type="checkbox" name="objectif" id="objectif">
+                                        <label class="form-check-label" for="objectif">
+                                           Reduire votre poids
+                                        </label>
+
+                                    </div>
+                                    <div class="form-check mb-4">
+                                        <input class="form-check-input" type="checkbox" name="objectif" id="objectif">
+                                        <label class="form-check-label" for="objectif">
+                                            Augmenter votre poids
+                                        </label>
+
+                                    </div>
+
                                     <?php if (isset($erreur)){?>
                                         <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                                             <span class="badge badge-pill badge-danger">!!!</span>
@@ -47,10 +60,7 @@ include "inc/head.php";
                                         </div>
                                     <?php } ?>
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-outline-primary btn-block col-12" type="submit">Log in</button>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="<?php echo base_url("Login_controller/Inscription")  ?>" class="btn btn-link btn-sm">Pas encore de compte ? Connectez-vous</a>
+                                        <button class="btn btn-outline-primary btn-block col-12" type="submit">Inscription</button>
                                     </div>
                                 </form>
                             </div>
