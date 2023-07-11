@@ -24,7 +24,6 @@ class Imc_controller extends  CI_Controller
         } else {
             $data['imc'] = null; // Utilisateur introuvable
         }
-
         $this->load->view('votre_vue', $data);
     }
 

@@ -102,3 +102,5 @@ CREATE table admin(
 
 insert into admin (nom,mdp) values ('admin','admin');
 insert into user (email, mdp) values ('jean@gmail.com','jean');
+
+insert into programme(idUser,idActSport,poidsInit,daty) values (11,1,57,'2021-01-25'),(9,3,67,'2021-01-20')

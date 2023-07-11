@@ -7,5 +7,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['login'] ='Login_controller/index';
+$route['graph'] = 'Graphe_controller/clientsParMois';
 
 
