@@ -92,8 +92,7 @@
     }
 
 </style>
-<header id="header" class="header">
-
+<header id="header" class="header" style="margin-bottom: 150px">
     <div class="top-left">
 
         <div class="navbar-header">

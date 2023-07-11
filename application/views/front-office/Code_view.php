@@ -92,6 +92,11 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
         .liste-code li:last-child {
             margin-bottom: 0;
         }
+        .gradient-form {
+            background-image: url(<?php echo base_url('assets/img/credit.jpg')?>);
+            background-size: cover;
+            background-attachment: fixed;
+        }
     </style>
 </head>
 <body>
@@ -100,6 +105,7 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-ng-12">
                 <div class="container-fluid">
+                    <h2>Montant : <?php echo $pm['montant']?> Ar</h2>
                     <div class="form-container">
                         <form method="post" action="<?php echo base_url('Code_controller/insertVola')?>">
                             <label for="code-input">Entrez un code:</label>
@@ -110,11 +116,10 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
                             <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                                 <span class="badge badge-pill badge-danger">!!!</span>
                                 <?php echo $erreur;?>
-                                
+
                             </div>
                         <?php } ?>
                     </div>
-                    <h4>Liste des codes</h4>
                     <ul class="liste-code">
                         <?php for($i=0;$i<count($all);$i++){ ?>
                             <li><?php echo $all[$i]['valeur']; ?></li>
@@ -129,7 +134,7 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
 </html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+s
 <script src="<?php echo site_url("assets/bootstrap/js/bootstrap.min.js")?>"></script>
 <?php include "inc/script.php"; ?>
 </body>

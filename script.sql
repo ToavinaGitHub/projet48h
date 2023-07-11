@@ -83,7 +83,8 @@ CREATE TABLE actSportPics(
 CREATE table exercice(
                          idExercice int PRIMARY KEY auto_increment,
                          nom VARCHAR(255),
-                         details VARCHAR(255)
+                         details VARCHAR(255),
+                         sary VARCHAR(255)
 );
 
 CREATE table actExercice(
@@ -110,6 +111,15 @@ CREATE table admin(
                       idAdmin int PRIMARY key auto_increment,
                       nom VARCHAR(255),
                       mdp VARCHAR(255)
+);
+
+CREATE TABLE programmeUser(
+    idPro int PRIMARY KEY auto_increment,
+    idUser int,
+    idRegime int,
+    idActSport int,
+    poidsInit double,
+    daty date
 );
 
 insert into admin (nom,mdp) values ('admin','admin');
@@ -140,6 +150,8 @@ INSERT INTO RegimeRecette (idRegime, idRecette) VALUES
 (3, 3),
 (4, 4),
 (5, 5);
+
+
 
 
 

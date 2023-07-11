@@ -2,7 +2,9 @@
 include "inc/head.php";
 include "inc/Header.php";
 include "inc/left_pannel.php";
-$baseUrl = base_url('uploads/img/recette/obj2.jpg');
+$baseUrlRec = base_url('uploads/img/recette/');
+$baseUrlEx = base_url('uploads/img/exercice/');
+session_start();
 ?>
 <link rel="stylesheet" href="<?php echo base_url("assets/css/suggestion.css")?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/css/login.css")?>">
@@ -98,7 +100,7 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
             margin-bottom: 10px;
         }
 
-        .response-card {
+        .response-card .actSport {
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -161,21 +163,31 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
             margin-bottom: 10px;
         }
 
+        .gradient-form {
+            background-image: url(<?php echo base_url('assets/img/suggestion.jpg')?>);
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            background-attachment: fixed;
+        }
 
 
     </style>
 </head>
 <body style="background-color: white;">
-<section class="col-12 gradient-form">
+<section class="col-12 gradient-form"   >
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-ng-12">
                 <div class="container-fluid">
-                    <div class="form-container" style="background-color: white">
+                    <div class="form-container" style="background-color: white;padding: 10%;">
                         VOTRE OBJECTIF
                         <form id="objectif-form">
                             <label for="poids-input">VOTRE OBJECTIF</label>
                             <input type="number" id="poids-input" placeholder="ex : +8kg">
+                            <input type="hidden" id="idUser" value="<?php echo $_SESSION['user']->idUser;?>">
                             <button type="submit">OK</button>
                         </form>
                     </div>
@@ -183,6 +195,9 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
                 <div class="response-card">
                     <!-- Afficher les recettes ici -->
                 </div>
+                    <div class="actSport">
+
+                    </div>
 
                     <div class="carac-regime">
                         <h2 class="carac-title"></h2>
@@ -209,11 +224,12 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
             event.preventDefault(); // Empêche le comportement par défaut du formulaire
 
             var poids = $('#poids-input').val();
+            var idUser = $('#idUser').val();
 
             $.ajax({
                 url: '<?php echo base_url("json/suggestion.php")?>',
                 method: 'POST',
-                data: { poids: poids },
+                data: { poids: poids,idUser:idUser },
                 success: function(response) {
                     console.log(response);
 
@@ -226,6 +242,8 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
                     var html = "";
                     // Ajouter le contenu HTML à la div response-card principale
                     $('.response-card').html(html);
+                    $('.actSport').html(html);
+
                     $('.caracRegime').html(html);
 
                     // Créer le contenu HTML des recettes du régime
@@ -233,13 +251,23 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
 
                     for (var i = 0; i < response.recettes.length; i++) {
                         recettesHtml += '<div class="card">';
-                        recettesHtml += '<img src="<?php echo $baseUrl; ?> " alt="Image">';
+                        recettesHtml += '<img src="<?php echo $baseUrlRec;?>/'+response.recettes[i].sary+' " alt="Image">';
                         recettesHtml += '<h2>' + response.recettes[i].nom + '</h2>';
                         recettesHtml += '<p>' + response.recettes[i].details + '</p>';
                         recettesHtml += '</div>';
                     }
 
-                    recettesHtml += '</div>'; // Ajoutez cette ligne pour fermer le conteneur des recettes
+                    var acti = '<div class="recettes-container">'; // Ajoutez cette ligne pour entourer les recettes
+
+                    for (var i = 0; i < response.exercices.length; i++) {
+                        acti += '<div class="card">';
+                        acti += '<img src="<?php echo $baseUrlEx;?>/'+response.exercices[i].sary+' " alt="Image">';
+                        acti += '<h2>' + response.exercices[i].nom + '</h2>';
+                        acti += '<p>' + response.exercices[i].details + '</p>';
+                        acti += '</div>';
+                    }
+
+                    acti += '</div>'; // Ajoutez cette ligne pour fermer le conteneur des recettes
 
                     $('.carac-title').text(response.details);
                     $('.carac-poids').text('POIDS CIBLE: ' + response.poids+' kg');
@@ -250,11 +278,11 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
 
                     // Ajouter le contenu HTML des recettes à la div response-card
                     $('.response-card').append(recettesHtml);
+                    $('.actSport').append(acti);
 
-
+                    var livrerButton = '<a href="<?php echo base_url('Suggestion_controller/livrer')?>?idRegime=' + response.idRegime + '&idActSport='+response.actSport.idActSport+'"><button class="livrer-button" style="padding: 10px 20px;border: none;border-radius: 5px;font-size: 16px;background-color: green;color: #ffffff;cursor: pointer;transition: background-color 0.3s ease;width: 100%;">Livrer</button></a>';
+                    $('.livrer-button').replaceWith(livrerButton);
                 },
-
-
                 error: function() {
                     console.log('Une erreur s\'est produite lors de la requête AJAX.');
                 }
@@ -266,6 +294,5 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
 
 
 <script src="<?php echo site_url("assets/bootstrap/js/bootstrap.min.js")?>"></script>
-<?php include "inc/script.php"; ?>
 </body>
 </html>

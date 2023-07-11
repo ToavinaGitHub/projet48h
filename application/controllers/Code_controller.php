@@ -15,13 +15,20 @@ class Code_controller extends CI_Controller {
 
         $r['all'] = $row;
 
+        $idUser = $_SESSION['user']->idUser;
+
+        $pm = $this->Code_model->getPorteMonnaieBy($idUser);
+
+        $r['pm'] = $pm;
+
+
         $this->load->view('front-office/Code_view',$r);
     }
 
     public function insertVola()
     {
         $code = $_POST['code'];
-        $idUser = 1;
+        $idUser = $_SESSION['user']->idUser;
         echo "hah";
         $row = $this->Code_model->getAll();
         $r['all'] = $row;
