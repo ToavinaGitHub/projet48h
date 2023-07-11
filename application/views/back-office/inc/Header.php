@@ -12,7 +12,7 @@
     }
 
     .header {
-        background-color: #fff;
+        background-color: #353535;
         padding: 10px;
         display: flex;
         justify-content: space-between;
@@ -30,7 +30,7 @@
     }
 
     .menutoggle {
-        color: #fff;
+        color: #D9D9D9;
         font-size: 18px;
         cursor: pointer;
     }
@@ -92,13 +92,14 @@
     }
 
 </style>
-<header id="header" class="header">
+<header id="header" class="header" style="margin-bottom: 150px">
     <div class="top-left">
+
         <div class="navbar-header">
-            <a class="navbar-brand" href=""><img src="uploads/logo/logo.jpg" alt="<?php echo $_SESSION['entreprise']['nomEntreprise']; ?>"></a>
-            <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+            <a  id="menuToggle" class="menutoggle"><i class="fa fa-bars" style="color: #D9D9D9;"></i></a>
         </div>
     </div>
+    <a style="color: white;">NUTRI'</a>
     <div class="top-right">
         <div class="header-menu">
             <div class="header-left">
@@ -106,13 +107,13 @@
                 <div class="form-inline">
                     <form class="search-form">
                         <input class="form-control mr-sm-2" type="text" style="color: #333" placeholder="Search ..." aria-label="Search">
-                        <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                        <button class="search-close" type="submit"><i class="fas fa-sign-out"></i></button>
                     </form>
                 </div>
             </div>
             <div class="user-area dropdown float-right">
                 <?php if (isset($_SESSION['user'])){?>
-                    <h4 class="profile" style="color: #333"><?php echo $_SESSION['user']['nomEmp'] ?></h4>
+                    <h4 class="profile" style="color: white"><i class="fa fa-power-off"></i></h4>
                 <?php }else{
                     echo "rien";
                 } ?>

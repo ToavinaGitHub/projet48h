@@ -32,7 +32,7 @@ class User_model extends CI_Model{
         $row=$query->row_array();
         return $row;
     }
-    public function getAllOjectif(){
+    public function getAllOjectif($id){
         $query=$this->db->get('objectif',array('idUser'=>$id));
         $row=$query->result_array();
         return $row;
@@ -41,6 +41,10 @@ class User_model extends CI_Model{
         $query = $this->db->query('SELECT o.idObjectif,o.nom FROM user u JOIN userObjectif us ON u.idUser = us.idUser  join objectif o on us.idObjectif=o.idObjectif WHERE u.idUser = ?', array($id));
         $row = $query->row_array();
         return $row;
+    }
+    public function getUserByEmail($email)
+    {
+        return $this->db->get_where('user', ['email' => $email])->row_array();
     }
 }
 ?>

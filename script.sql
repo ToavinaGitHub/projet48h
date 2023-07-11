@@ -152,6 +152,21 @@ INSERT INTO RegimeRecette (idRegime, idRecette) VALUES
 (5, 5);
 
 
+ALTER TABLE regime add column pourcViande double;
+
+ALTER TABLE regime add column pourcPoisson double;
+
+ALTER TABLE regime add column pourcVolaille double;
+
+ALTER TABLE user add column isGold int;
+
+CREATE TABLE prixGold(
+    idPrixGold int primary key auto_increment,
+    prix double,
+    daty date
+);
+
+
 
 
 

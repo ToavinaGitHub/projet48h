@@ -6,6 +6,7 @@ class Suggestion_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Suggestion_model');
+        $this->load->model('Code_model');
 
     }
 
@@ -34,11 +35,7 @@ class Suggestion_controller extends CI_Controller {
 
         $daty = new DateTime();
         $date = $daty->format('Y-m-d');
-
-
         echo "haha2" ;
-
-
         $data = array(
             'idPro'=>null,
             'idUser'=>$idUser,
@@ -47,11 +44,30 @@ class Suggestion_controller extends CI_Controller {
             'poidsInit'=>$poids,
             'daty'=>$date
         );
+        echo "haha3";
+        $pm = $this->Code_model->getPorteMonnaieBy($idUser);
+        echo "haha4";
+        $regime = $this->db->get_where('regime',array('idRegime'=>$idRegime))->row_array();
 
-        var_dump($data);
+        $mt = $regime['montant'];
+        echo "haha5";
+        if($user['isGold']==1){
+            $mt = $regime['montant']-(($regime['montant']*15)/100);
+        }
+        echo "haha6";
 
-        $this->Suggestion_model->livrer($data);
-        redirect(base_url('Suggestion_controller'));
+        if($pm['montant']< $mt){
+            redirect(base_url("Code_controller"));
+        }else{
+            $objPm = array(
+                'idUser'=>$idUser,
+                'montant'=>$pm['montant']-$mt
+            );
+            $this->db->update('porteMonnaie',$objPm,array('idUser'=>$idUser));
+            $this->Suggestion_model->livrer($data);
+            redirect(base_url('Suggestion_controller'));
+        }
+
     }
 
     public function afficherMonRegime(){

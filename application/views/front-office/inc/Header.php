@@ -90,7 +90,40 @@
         right: 0;
         z-index: 999;
     }
+    .blink {
+        animation: glowing-animation 2s ease-in-out infinite;
+        -webkit-animation: glowing-animation 2s ease-in-out infinite;
+    }
 
+    @keyframes glowing-animation {
+        0% {
+            color: #ffffff;
+            text-shadow: none;
+        }
+        50% {
+            color: #f9c74f;
+            text-shadow: 0 0 8px #f9c74f, 0 0 16px #f9c74f, 0 0 24px #f9c74f;
+        }
+        100% {
+            color: #ffffff;
+            text-shadow: none;
+        }
+    }
+
+    @-webkit-keyframes glowing-animation {
+        0% {
+            color: #ffffff;
+            text-shadow: none;
+        }
+        50% {
+            color: #f9c74f;
+            text-shadow: 0 0 8px #f9c74f, 0 0 16px #f9c74f, 0 0 24px #f9c74f;
+        }
+        100% {
+            color: #ffffff;
+            text-shadow: none;
+        }
+    }
 </style>
 <header id="header" class="header" style="margin-bottom: 150px">
     <div class="top-left">
@@ -103,13 +136,14 @@
     <div class="top-right">
         <div class="header-menu">
             <div class="header-left">
-                <button class="search-trigger" style="color: #333"><i class="fa fa-search"></i></button>
-                <div class="form-inline">
-                    <form class="search-form">
-                        <input class="form-control mr-sm-2" type="text" style="color: #333" placeholder="Search ..." aria-label="Search">
-                        <button class="search-close" type="submit"><i class="fas fa-sign-out"></i></button>
-                    </form>
-                </div>
+                <form class="search-form">
+                    <?php if ($_SESSION['user']->isGold==0) { ?>
+                        <a href="<?php echo base_url('DevenirGold_controller/index')?>" style="text-decoration: none;"><h4 class="blink">Devenir GOLD</h4></a>
+                    <?php }else{ ?>
+
+                    <?php } ?>
+
+                </form>
             </div>
             <div class="user-area dropdown float-right">
                 <?php if (isset($_SESSION['user'])){?>

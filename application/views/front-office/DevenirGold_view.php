@@ -97,6 +97,49 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
             background-size: cover;
             background-attachment: fixed;
         }
+        .blink {
+            animation: glowing-animation 2s ease-in-out infinite;
+            -webkit-animation: glowing-animation 2s ease-in-out infinite;
+        }
+
+        @keyframes glowing-animation {
+            0% {
+                color: #ffffff;
+                text-shadow: none;
+            }
+            50% {
+                color: #f9c74f;
+                text-shadow: 0 0 8px #f9c74f, 0 0 16px #f9c74f, 0 0 24px #f9c74f;
+            }
+            100% {
+                color: #ffffff;
+                text-shadow: none;
+            }
+        }
+
+        @-webkit-keyframes glowing-animation {
+            0% {
+                color: #ffffff;
+                text-shadow: none;
+            }
+            50% {
+                color: #f9c74f;
+                text-shadow: 0 0 8px #f9c74f, 0 0 16px #f9c74f, 0 0 24px #f9c74f;
+            }
+            100% {
+                color: #ffffff;
+                text-shadow: none;
+            }
+        }
+        .btn-gold {
+            width: 100%;
+            background: black;
+            padding: 3%;
+            color: #f9c74f;
+            text-shadow: 0 0 8px #f9c74f, 0 0 16px #f9c74f, 0 0 24px #f9c74f;
+        }
+
+
     </style>
 </head>
 <body>
@@ -105,25 +148,16 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-ng-12">
                 <div class="container-fluid">
-                    <h2>Montant : <?php echo $pm['montant']?> Ar</h2>
-                    <div class="form-container">
-                        <form method="post" action="<?php echo base_url('Code_controller/insertVola')?>">
-                            <label for="code-input">Entrez un code:</label>
-                            <input type="text" id="code-input"  name="code" placeholder="Code à 14 chiffres...">
-                            <input type="submit" value="Entrer">
-                        </form>
-                        <?php if (isset($erreur)){?>
-                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                                <span class="badge badge-pill badge-danger">!!!</span>
-                                <?php echo $erreur;?>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <ul class="liste-code">
-                        <?php for($i=0;$i<count($all);$i++){ ?>
-                            <li><?php echo $all[$i]['valeur']; ?></li>
-                        <?php } ?>
-                    </ul>
+                    <h2>Mon argent  : <?php echo $pm['montant']?> Ar</h2>
+                    <a class="blink"><h1>Prix de gold :<?php echo $prixGold['prix']; ?> AR</h1></a>
+                    <a href="<?php echo base_url('DevenirGold_controller/setGold')?>"><button class="btn-gold">ACHETER GOLD</button></a>
+                    <?php if (isset($erreur)){?>
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-danger">!!!</span>
+                            <?php echo $erreur;?>
+                        </div>
+                    <?php } ?>
+                    c
                 </div>
             </div>
         </div>

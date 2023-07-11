@@ -37,7 +37,8 @@ class Registration_controller extends CI_Controller
             'dtn' => $dtn,
             'poids' => $poids,
             'sexe' => $sexe,
-            'taille' => $taille
+            'taille' => $taille,
+            'isGold'=>0
 
         );
 
