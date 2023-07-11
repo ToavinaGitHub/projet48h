@@ -68,6 +68,7 @@ class Registration_controller extends CI_Controller
         }
 
         redirect(base_url('Login_controller'));
+
         $this->load->view('front-office/Login_view'); // Remplacez 'login_success' par le nom de votre page de succès
 
     }

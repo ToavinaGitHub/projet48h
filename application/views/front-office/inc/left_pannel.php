@@ -28,6 +28,10 @@
                     <a href="<?php echo base_url("Suggestion_controller/afficherMonRegime")?>" class="dropdown-toggle" >
                         <i class="menu-icon fa fa-cogs"></i> Mon regime </a>
                 </li>
+                <li class="menu-item">
+                    <a href="<?php echo base_url("Imc_controller/ShowImc")?>" class="dropdown-toggle" >
+                        <i class="menu-icon fa fa-cogs"></i> Mon IMC </a>
+                </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart-o"></i>Mise a jour</a>
                     <ul class="sub-menu children dropdown-menu" style="background-color: #353535">
@@ -50,10 +54,6 @@
                 </li>
 
                 <li class="menu-title">Financiere</li><!-- /.menu-title -->
-                <li class="menu-item">
-                    <a href="<?php echo base_url("AddEntreprise_controller/infoEntreprise")?>" class="dropdown-toggle" >
-                        <i class="menu-icon fa fa-cogs"></i> Mon compte </a>
-                </li>
                 <li class="menu-item">
                     <a href="<?php echo base_url("Code_controller")?>" class="dropdown-toggle" >
                         <i class="menu-icon fa fa-cogs"></i>Ajout monnaie</a>

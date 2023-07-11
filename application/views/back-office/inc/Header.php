@@ -12,7 +12,7 @@
     }
 
     .header {
-        background-color: #353535;
+        background-color: #284B63;
         padding: 10px;
         display: flex;
         justify-content: space-between;
@@ -99,7 +99,7 @@
             <a  id="menuToggle" class="menutoggle"><i class="fa fa-bars" style="color: #D9D9D9;"></i></a>
         </div>
     </div>
-    <a style="color: white;">NUTRI'</a>
+    <a style="color: white;">NUTRI'ADMIN</a>
     <div class="top-right">
         <div class="header-menu">
             <div class="header-left">
@@ -112,8 +112,8 @@
                 </div>
             </div>
             <div class="user-area dropdown float-right">
-                <?php if (isset($_SESSION['user'])){?>
-                    <h4 class="profile" style="color: white"><i class="fa fa-power-off"></i></h4>
+                <?php if (isset($_SESSION['admin'])){?>
+                    <a href="<?php echo base_url('Profil_controller/deconnecterAdmin')?>"><h4 class="profile" style="color: white"><i class="fa fa-power-off"></i></h4></a>
                 <?php }else{
                     echo "rien";
                 } ?>

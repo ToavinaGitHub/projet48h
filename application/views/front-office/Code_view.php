@@ -121,7 +121,7 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
                     </div>
                     <ul class="liste-code">
                         <?php for($i=0;$i<count($all);$i++){ ?>
-                            <li><?php echo $all[$i]['valeur']; ?></li>
+                            <li><?php echo $all[$i]['valeur']; ?>________________________________________________________<?php echo $all[$i]['montant']; ?>Ar________<?php echo $all[$i]['etat']; ?></li>
                         <?php } ?>
                     </ul>
                 </div>

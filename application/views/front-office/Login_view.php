@@ -51,6 +51,7 @@ include "inc/head.php";
                                     </div>
                                     <div class="text-right">
                                         <a href="<?php echo base_url("Login_controller/inscription") ?>" class="btn btn-link btn-sm">Pas encore de compte ? Connectez-vous</a>
+                                        <a href="<?php echo base_url("Admin_controller") ?>" class="btn btn-link btn-sm" >Admin</a>
                                     </div>
                                 </form>
                             </div>

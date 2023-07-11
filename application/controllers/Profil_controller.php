@@ -33,5 +33,14 @@ class Profil_controller extends CI_Controller {
         $age = $now->diff($dob)->y;
         return $age;
     }
-
+    public function deconnecter()
+    {
+        session_destroy();
+        redirect('Login_controller');
+    }
+    public function deconnecterAdmin()
+    {
+        session_destroy();
+        redirect('Admin_controller');
+    }
 }

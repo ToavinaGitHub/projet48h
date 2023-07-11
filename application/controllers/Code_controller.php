@@ -32,6 +32,14 @@ class Code_controller extends CI_Controller {
         echo "hah";
         $row = $this->Code_model->getAll();
         $r['all'] = $row;
+        $row = $this->Code_model->getAll();
+
+        $r['all'] = $row;
+
+
+        $pm = $this->Code_model->getPorteMonnaieBy($idUser);
+
+        $r['pm'] = $pm;
         if($this->Code_model->checkCode($code) == null)
         {
             $r['erreur']="Code non existante";
@@ -41,6 +49,7 @@ class Code_controller extends CI_Controller {
             $pm = $this->Code_model->getPorteMonnaieBy($idUser);
 
             if($c['etat']==0){
+
                 $r['erreur']="Code déja utilisé";
                 $this->load->view('front-office/Code_view',$r);
             }
@@ -60,6 +69,9 @@ class Code_controller extends CI_Controller {
                 var_dump($data);
                 var_dump($data2);
                 $this->Code_model->insertVola($idUser,$data,$c['idCode'],$data2);
+                $pm = $this->Code_model->getPorteMonnaieBy($idUser);
+                $r['pm'] = $pm;
+                $this->load->view('front-office/Code_view',$r);
             }
         }
 

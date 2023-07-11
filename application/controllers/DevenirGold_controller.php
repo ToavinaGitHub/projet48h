@@ -87,7 +87,8 @@ class DevenirGold_controller extends CI_Controller {
                 );
                 $this->DevenirGold_model->update($idUser);
                 $this->db->update('porteMonnaie', $obj,array('idUser' => $idUser));
-                $this->load->view('front-office/DevenirGold_view',$r);
+                $_SESSION['user']->isGold=1;
+                redirect(base_url('Suggestion_controller'));
             }
 
         }

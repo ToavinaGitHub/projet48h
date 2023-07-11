@@ -167,7 +167,6 @@ $baseUrl = base_url('uploads/img/recette/obj2.jpg');
 </html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-s
 <script src="<?php echo site_url("assets/bootstrap/js/bootstrap.min.js")?>"></script>
 <?php include "inc/script.php"; ?>
 </body>

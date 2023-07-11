@@ -291,8 +291,6 @@ session_start();
     });
 </script>
 
-
-
 <script src="<?php echo site_url("assets/bootstrap/js/bootstrap.min.js")?>"></script>
 </body>
 </html>

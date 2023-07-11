@@ -20,7 +20,6 @@ class Admin_controller extends  CI_Controller
         $this->load->view('back-office/Accueil_view',$clients);
     }
     public function login(){
-
         echo 1;
         $email = $this->input->post('email');
         $password = $this->input->post('mdp');
@@ -29,6 +28,7 @@ class Admin_controller extends  CI_Controller
         echo 2;
         $clients['user'] = $this->Admin_model->getAllUser();
         if ($user) {
+            $_SESSION['admin']=1;
             $this->load->view('back-office/Accueil_view',$clients);
         } else {
             $message['erreur']="Email ou mot de passe incorrect";
