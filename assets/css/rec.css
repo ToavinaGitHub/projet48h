@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.recette {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.recette img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.recette h2 {
+    margin-top: 10px;
+    color: #333;
+}
+
+.recette p {
+    color: #666;
+}
+
+.recette .ajouter {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.recette .ajouter:hover {
+    background-color: #45a049;
+}

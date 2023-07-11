@@ -16,9 +16,9 @@ class Regime_controller extends CI_Controller {
          $row['obj']=$this->Regime_model->getAllOjectif();
         
       
-        var_dump($row['regime']);
+        //var_dump($row['regime']);
         
-       $this->load->view('back-office/regime_view',$row);
+       $this->load->view('back-office/Regime_view',$row);
     }
     public function insert(){
        
@@ -32,7 +32,7 @@ class Regime_controller extends CI_Controller {
         $viande = $_POST['viande'];
         $poisson= $_POST['poisson'];
         $poulet = $_POST['poulet'];
-        var_dump($duree,$idob,$poids,$detail,$sexe,$montant,$viande,$poisson,$poulet);
+        // var_dump($duree,$idob,$poids,$detail,$sexe,$montant,$viande,$poisson,$poulet);
         $this->Regime_model->insert($duree,$idob,$poids,$detail,$sexe,$montant,$viande,$poisson,$poulet);
         redirect(base_url('Regime_controller/index'));
     }

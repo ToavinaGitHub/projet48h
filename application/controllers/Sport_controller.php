@@ -18,7 +18,7 @@ class Sport_controller extends CI_Controller {
       
         //var_dump($row['sport']);
         
-        $this->load->view('back-office/sportB_view',$row);
+        $this->load->view('back-office/SportB_view',$row);
     }
     public function insert(){
        

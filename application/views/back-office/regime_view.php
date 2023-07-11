@@ -72,6 +72,8 @@ include "inc/left_pannel.php";
                             <div class="actions">
                                 <button class="edit-btn"><a href="<?php echo base_url("ModifRegime_controller/index")?>?id=<?php echo $regime[$i]['idRegime'] ?>">Modifier</a></button>
                                 <button class="delete-btn"><a href="<?php echo base_url("Regime_controller/delete")?>?id=<?php echo $regime[$i]['idRegime'] ?>">Supprimer</a></button>
+                                    
+                                <button class="edit-btn"><a href="<?php echo base_url("Recette_controller/index")?>?id=<?php echo $regime[$i]['idRegime'] ?>">Ajouter</a></button>
                             </div>
                         </div>
                     </div>
