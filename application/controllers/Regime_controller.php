@@ -37,11 +37,11 @@ class Regime_controller extends CI_Controller {
         redirect(base_url('Regime_controller/index'));
     }
      
-    //  public function delete(){
-    //     $id=$_GET['id'];
-    //     $this->Regime_model->delete($id);
-    //     redirect(base_url('Regime_controller/index'));
-    //  }
+     public function delete(){
+        $id=$_GET['id'];
+        $this->Regime_model->delete($id);
+        redirect(base_url('Regime_controller/index'));
+     }
 
 
 

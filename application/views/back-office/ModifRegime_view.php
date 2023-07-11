@@ -21,7 +21,7 @@ include "inc/left_pannel.php";
             <form action="<?php echo base_url("Regime_controller/insert") ?>" method="post">
             <input type="hidden" value="<?php echo $spr['idRegime'] ?>" name="id">
                 <label for="activity-name">Duree :</label>
-                <input type="text" id="activity-name" name="duree" required>
+                <input value="<?php echo $spr['duree']?>" type="text" id="activity-name" name="duree" required>
                
                 <label for="activity-goal">Objectif :</label>
                 <select id="activity-goal" name="goal" required>
@@ -31,9 +31,9 @@ include "inc/left_pannel.php";
                     <?php } ?>
                 </select>
                 <label for="activity-weight">Poids à perdre/gagner (en kg) :</label>
-                <input type="number" id="activity-weight" name="poids" required>
+                <input value="<?php echo $spr['poids']?>" type="number" id="activity-weight" name="poids" required>
                 <label for="activity-details">Détails :</label>
-                <input type="text"id="activity-details" name="detail" required></input>
+                <input value="<?php echo $spr['details']?>" type="text"id="activity-details" name="detail" required>
                 
                 <label for="activity-gender">Sexe :</label>
                 <select id="activity-gender" name="sexe" required>
@@ -42,13 +42,13 @@ include "inc/left_pannel.php";
                     
                 </select>
                 <label for="activity-height">Montant :</label>
-                <input type="number" id="activity-height" name="montant" required>
+                <input value="<?php echo $spr['montant']?>" type="number" id="activity-height" name="montant" required>
                 <label for="activity-weight">Poucentage viande  :</label>
-                <input type="number" id="activity-weight" name="viande" required>
+                <input value="<?php echo $spr['pourcViande']?>" type="number" id="activity-weight" name="viande" required>
                 <label for="activity-weight">Poucentage poisson :</label>
-                <input type="number" id="activity-weight" name="poisson" required>
+                <input value="<?php echo $spr['pourcPoisson']?>" type="number" id="activity-weight" name="poisson" required>
                 <label for="activity-weight">Poucentage poulet :</label>
-                <input type="number" id="activity-weight" name="poulet" required>
+                <input value="<?php echo $spr['pourcPoulet']?>" type="number" id="activity-weight" name="poulet" required>
                 <button type="submit">Ajouter</button>
             </form>
         </div>

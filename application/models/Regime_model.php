@@ -24,10 +24,10 @@ class Regime_model extends CI_Model{
     //     $query = $this->db->query('update regime set nom=?,details=?,poids=?,idObjectif=?,sexe=?,taille=? where idActSport=?', array($duree,$idob,$poids,$detail,$sexe,$montant,$viande,$poisson,$poulet,$id));
         
     // }
-    // public function delete($id) {
-    //     $query = $this->db->query('delete from regime where idRegime=?',array($id));
+    public function delete($id) {
+        $query = $this->db->query('delete from regime where idRegime=?',array($id));
         
-    // }
+    }
 
     
     
