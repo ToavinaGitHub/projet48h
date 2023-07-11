@@ -118,3 +118,7 @@ insert into userObjectif(idObjectif,idUser) values (2,5);
 insert into userObjectif(idObjectif,idUser) values (1,6);
 
 select* from user u join userObjectif us on u.idUser=us.idUser;
+
+alter table regime add column pourcViande double;
+alter table regime add column pourcPoisson double;
+alter table regime add column pourcPoulet double;
