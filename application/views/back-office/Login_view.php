@@ -19,9 +19,9 @@ include "inc/head.php";
                         <div class="col-lg-6">
                             <div class="card-body p-md-5 mx-md-4">
                                 <div class="text-center">
-                                    <h4 class="mt-1 mb-5 pb-1">Login </h4>
+                                    <h4 class="mt-1 mb-5 pb-1">ADMIN LOGIN </h4>
                                 </div>
-                                <form method="post" action="<?php echo base_url('Login_controller/login') ?>" data-parsley-validate id="form">
+                                <form method="post" action="<?php echo base_url('Admin_controller/login') ?>" data-parsley-validate id="form">
                                     <p>Please login to your account</p>
                                     <div class="form-outline mb-4">
                                         <div class="user-box">
@@ -47,11 +47,11 @@ include "inc/head.php";
                                         </div>
                                     <?php } ?>
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-outline-primary btn-block col-12" type="submit">Log in</button>
+                                        <button class="btn btn-outline-primary btn-block col-12" type="submit">Connexion</button>
                                     </div>
-                                    <div class="text-right">
-                                        <a href="<?php echo base_url("Login_controller/Inscription")  ?>" class="btn btn-link btn-sm">Pas encore de compte ? Connectez-vous</a>
-                                    </div>
+<!--                                    <div class="text-right">-->
+<!--                                        <a href="--><?php //echo base_url("Login_controller/Inscription")  ?><!--" class="btn btn-link btn-sm">Pas encore de compte ? Connectez-vous</a>-->
+<!--                                    </div>-->
                                 </form>
                             </div>
                         </div>
